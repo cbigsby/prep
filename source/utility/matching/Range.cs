@@ -7,7 +7,7 @@ namespace code.utility.matching
 
     public class Range
     {
-        public static StartingRange<Value> StartingAt<Value>(Value value, bool inclusive = true) where Value : IComparable<Value>
+        public static StartingRange<Value> starting_at<Value>(Value value, bool inclusive = true) where Value : IComparable<Value>
         {
             if (inclusive)
                 return () => { return x => x.CompareTo(value) >= 0;};
@@ -15,7 +15,7 @@ namespace code.utility.matching
             return () => { return x => x.CompareTo(value) > 0; };
         }
 
-        public static EndingRange<Value> EndingAt<Value>(Value value, bool inclusive = false) where Value : IComparable<Value>
+        public static EndingRange<Value> ending_at<Value>(Value value, bool inclusive = false) where Value : IComparable<Value>
         {
             if (inclusive)
                 return () => { return x => x.CompareTo(value) <= 0; };
