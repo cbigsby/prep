@@ -15,12 +15,12 @@ namespace code.prep.people
         public Calculator(IDbConnection connection)
         {
             _connection = connection;
-            _connection.Open();
         }
 
         public int add(int i, int i1)
         {
             if (i < 0 || i1 < 0) throw new NotImplementedException();
+            _connection.Open();
             return i + i1;
         }
 
