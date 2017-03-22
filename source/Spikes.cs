@@ -14,7 +14,7 @@ namespace code
 
     public class connecting_to_a_mysql_database_running_in_a_container : concern
     {
-      It works = () =>
+        private It works = () =>
       {
         var table = new DataTable();
         using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["code"].ConnectionString))
