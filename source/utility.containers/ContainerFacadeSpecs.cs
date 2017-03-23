@@ -15,18 +15,20 @@ namespace code.utility.containers
 
     public class when_fetching_a_dependency : concern
     {
-      Establish c = () =>
+        private Establish c = () =>
       {
         registry = depends.on<IFindFactoriesForAType>();
+        registry.setup(x => x.get_resolver_for_type<object>()).Return(the_builder);
+        the_builder = fake.an<TypeBuilder<object>>;
       };
 
-      Because b = () => 
-        sut.an<Object>();
+      Because b = () => sut.an<Object>();
 
-      It tells_the_dependency_registry_to_get_the_factory_for_that_type = () =>
-        registry.should().received(x => x.get_resolver_for_type(typeof(Object)));
+      It uses_the_type_builder_to_build_the_type = () =>
+        the_builder.should().received(x => x.Invoke());
 
       static IFindFactoriesForAType registry;
+      static TypeBuilder<object> the_builder;
     }
   }
 }

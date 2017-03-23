@@ -2,8 +2,9 @@
 
 namespace code.utility.containers
 {
-    internal interface IFindFactoriesForAType
+    public delegate TypeToCreate TypeBuilder<out TypeToCreate>();
+    public interface IFindFactoriesForAType
     {
-        void get_resolver_for_type(Type the_type);
+        TypeBuilder<TypeToCreate> get_resolver_for_type<TypeToCreate>();
     }
 }
